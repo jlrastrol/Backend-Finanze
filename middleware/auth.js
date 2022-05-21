@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.JWTPRIVATEKEY, (err, decoded) => {
             if (err) {
-                return res.json({ mensaje: 'Token inválida' });
+                return res.json({ mensaje: 'Invalid Token.' });
             } else {
                 req.decoded = decoded;
                 next();
@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
         });
     } else {
         res.send({
-            mensaje: 'Token no proveída.'
+            mensaje: 'Token not provided.'
         });
     }
 };
